@@ -1,0 +1,53 @@
+# Authorship
+Authors:    Friends of Jake
+Copyrights: (C) 2015 The Above Authors
+License:    Apache
+Name:       bap-callstrings-exercise
+Synopsis:   Solution to "Fun With BAP! Due March 12."
+Version:    0.1
+
+# Oasis configuration
+AlphaFeatures+:        ocamlbuild_more_args
+BetaFeatures+:         section_object
+BuildType:             OCamlbuild (0.4)
+OASISFormat:           0.4
+Plugins+:              DevFiles (0.4)
+Plugins+:              META (0.4)
+XOCamlbuildExtraArgs+: -j 4
+
+# Custom: build
+PostBuildCommand: sh postbuild.sh
+
+# Custom: clean
+PreCleanCommand:  sh preclean.sh
+
+# Depend: standard
+BuildDepends+:
+  bap,
+  cmdliner,
+  core_kernel,
+  dum,
+  ocamlgraph,
+  oUnit,
+  sexplib.syntax
+BuildTools+: ocamlbuild
+
+# Depend: lwt and logging
+BuildDepends+:         lwt.syntax.log, lwt.unix
+BuildTools+:           camlp4o
+XOCamlbuildExtraArgs+: -tag syntax_camlp4o
+
+# Note: With our current plugin system, there are two kinds of "Library"
+# declarations. If you declare a normal library and use it in one of the plugins
+# disguised as a "Library" here, you should (i) list the normal library in the
+# "BuildDepends" field of the plugin as usual and (ii) add the library to the
+# .mldylib file of the plugin. The second step is needed so that the library
+# gets packaged into the plugin's cmxs.
+
+Library callgraph
+  ByteOpt+:       -ppopt -lwt-debug
+  CompiledObject: best
+  Modules:        Main
+  NativeOpt+:     -ppopt -lwt-debug
+  Pack:           true
+  Path:           plugin/callgraph

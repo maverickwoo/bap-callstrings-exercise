@@ -1,0 +1,13 @@
+# OASIS_START
+# DO NOT EDIT (digest: af7203c170c8367267e058ced04bff29)
+version = "0.1"
+description = "Solution to \"Fun With BAP! Due March 12.\""
+requires =
+"bap cmdliner core_kernel dum ocamlgraph oUnit sexplib.syntax lwt.syntax.log lwt.unix"
+archive(byte) = "callgraph.cma"
+archive(byte, plugin) = "callgraph.cma"
+archive(native) = "callgraph.cmxa"
+archive(native, plugin) = "callgraph.cmxs"
+exists_if = "callgraph.cma"
+# OASIS_STOP
+

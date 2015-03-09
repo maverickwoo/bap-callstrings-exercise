@@ -1,0 +1,10 @@
+B _build/**
+PKG bap
+PKG core_kernel
+PKG dum
+PKG ocamlgraph
+REC
+S lib/**
+S lib_test/**
+S plugin/**
+S src/**

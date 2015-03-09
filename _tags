@@ -1,0 +1,33 @@
+# OASIS_START
+# DO NOT EDIT (digest: 8cc5bb27ef76eaab16324f9465736b51)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+true: annot, bin_annot
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Library callgraph
+"plugin/callgraph/callgraph.cmxs": use_callgraph
+"plugin/callgraph/main.cmx": for-pack(Callgraph)
+<plugin/callgraph/callgraph.{cma,cmxa}>: oasis_library_callgraph_byte
+<plugin/callgraph/*.ml{,i,y}>: oasis_library_callgraph_byte
+<plugin/callgraph/callgraph.{cma,cmxa}>: oasis_library_callgraph_native
+<plugin/callgraph/*.ml{,i,y}>: oasis_library_callgraph_native
+<plugin/callgraph/*.ml{,i,y}>: pkg_bap
+<plugin/callgraph/*.ml{,i,y}>: pkg_cmdliner
+<plugin/callgraph/*.ml{,i,y}>: pkg_core_kernel
+<plugin/callgraph/*.ml{,i,y}>: pkg_dum
+<plugin/callgraph/*.ml{,i,y}>: pkg_lwt.syntax.log
+<plugin/callgraph/*.ml{,i,y}>: pkg_lwt.unix
+<plugin/callgraph/*.ml{,i,y}>: pkg_oUnit
+<plugin/callgraph/*.ml{,i,y}>: pkg_ocamlgraph
+<plugin/callgraph/*.ml{,i,y}>: pkg_sexplib.syntax
+# OASIS_STOP

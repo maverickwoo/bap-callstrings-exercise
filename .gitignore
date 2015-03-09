@@ -1,0 +1,6 @@
+/*.byte
+/*.native
+/*.plugin
+/_build
+/setup.data
+/setup.log
